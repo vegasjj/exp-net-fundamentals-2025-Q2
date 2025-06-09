@@ -47,4 +47,4 @@ This is the resource map of the VPC deployed with CFN.
 
 This is the CloudFormation stack in the AWS Console
 
-![](assets/aws-vpc-cloudformation_stack.png)
+![](assets/aws-vpc-cloudformation-stack.png)
