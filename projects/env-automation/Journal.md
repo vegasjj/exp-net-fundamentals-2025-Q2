@@ -29,9 +29,9 @@ Used CodeRabbit to check for issues before committing changes to the branch. It 
 
 I tried to use Infrastructure Composer to generate the VPC diagram but it did not have the expected quality so I made one using draw.io
 
-![](assets/aws_vpc_diagram.png)
+![](assets/aws-vpc-diagram.png)
 
-## Intalling AWS CLI
+## Installing AWS CLI
 
 I followed the install instructions in:
 
@@ -43,8 +43,8 @@ It was necessary to exclude installation files using the `.gitignore` to keep a 
 
 This is the resource map of the VPC deployed with CFN.
 
-![](assets/aws_vpc_resource_map.png)
+![](assets/aws-vpc-resource_map.png)
 
 This is the CloudFormation stack in the AWS Console
 
-![](assets/aws_vpc_cloudformation_stack.png)
+![](assets/aws-vpc-cloudformation_stack.png)
