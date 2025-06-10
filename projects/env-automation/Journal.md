@@ -43,7 +43,7 @@ It was necessary to exclude installation files using the `.gitignore` to keep a 
 
 This is the resource map of the VPC deployed with CFN.
 
-![](assets/aws-vpc-resource_map.png)
+![](assets/aws-vpc-resource-map.png)
 
 This is the CloudFormation stack in the AWS Console
 
