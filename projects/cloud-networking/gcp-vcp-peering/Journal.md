@@ -1,1 +1,0 @@
-# GCP VPC Peering Journal
