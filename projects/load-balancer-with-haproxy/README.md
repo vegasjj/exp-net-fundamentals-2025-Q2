@@ -30,7 +30,7 @@ sudo apt update && sudo apt install containerlab
 ## Run Deploy Scripts
 
 ```sh
-cd projects/load-balancer-with-haproxy/scripts
+cd projects/load-balancer-with-haproxy/lab-files
 clab deploy
 ```
 
