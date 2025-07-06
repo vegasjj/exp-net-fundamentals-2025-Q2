@@ -1,0 +1,1 @@
+[![alt text](assets/network-diagram.drawio.png)](https://youtu.be/RCzJrjyuzJI)
