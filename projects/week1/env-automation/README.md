@@ -13,7 +13,7 @@ aws sts get-caller-identity
 We moved to the project directory and make the script executable before run it.
 
 ```sh
-cd projects/env-automation
+cd projects/week1/env-automation
 chmod u+x ./bin/deploy
 ./bin/deploy
 ```
