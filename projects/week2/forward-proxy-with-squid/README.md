@@ -1,10 +1,10 @@
-# How to Deploy squid on Ubuntu
+# How to Deploy Squid on Ubuntu
 
 ## Install the Squid Package
 
 ```sh
 sudo apt update
-sudo apt install squid
+sudo apt install -y squid
 ```
 
 ## Verify the Service's Status
@@ -32,7 +32,7 @@ Below, you can see  the output of a working configuration for a web proxy:
 
 ```sh
 ubuntu@ip-10-200-123-10:~$ cat /etc/squid/squid.conf | grep -v '^#' | grep -v '^$'
-acl localnet src 10.200.123.128/28
+acl localnet src 10.200.123.128/28      # ← replace with your subnet
 acl SSL_ports port 443
 acl Safe_ports port 80          # http
 acl Safe_ports port 443         # https

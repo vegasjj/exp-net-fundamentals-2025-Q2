@@ -29,8 +29,7 @@ On the web proxy server, the squid traffic was monitored to capture the client p
 
 ![Proxy server capturing squid logs](./assets/forward-proxy-1.png)
 
-Also, on the networking configuration for the web proxy server (on the AWS console), it was necessary to **disable the source/destination check** so that the proxy could forward traffic coming from the client proxy without being drop (remember: the web proxy server only forwards packets; it is not the final destination.)
-
+Also, on the networking configuration for the web proxy server (on the AWS console), it was necessary to **disable the source/destination check** so that the proxy could forward traffic coming from the client proxy without being dropped (remember: the web proxy server only forwards packets; it is not the final destination.)
 
 ![AWS console showing networking configuration](./assets/forward-proxy-4.png)
 
