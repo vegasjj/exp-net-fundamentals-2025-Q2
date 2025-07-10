@@ -20,7 +20,7 @@ sudo systemctl start squid
 sudo systemctl enable squid
 ```
 
-## Squid Set Up
+## Squid Setup
 
 To show the current Squid configuration (filtering commented and blank lines), run:
 
