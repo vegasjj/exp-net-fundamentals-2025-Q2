@@ -13,20 +13,26 @@ cat /etc/squid/squid.conf | grep -v '^#' | grep -v '^$'
 Below, you can see  the output of a working configuration for a reverse web proxy pointing to an IIS server:
 
 ```sh
+acl localnet src 10.200.123.128/28
+acl SSL_ports port 443
+acl Safe_ports port 80          # http
+acl Safe_ports port 443         # https
 acl Safe_ports port 8080        # reverse proxy
-http_port 8080 accel vhost
-cache_peer 10.200.123.141 parent 80 0 no-query originserver name=iis-server
-acl our_sites dstdomain proxy-demo
-cache_peer_access iis-server allow our_sites
-cache_peer_access iis-server deny all
-http_access deny our_sites
-```
-
-Second setup:
-
-```sh
-acl Safe_ports port 8080        # reverse proxy
-# http_access deny all
+http_access deny !Safe_ports
+http_access deny CONNECT !SSL_ports
+http_access allow localhost
+include /etc/squid/conf.d/*.conf
+http_access allow localnet
+http_port 3128
+access_log daemon:/var/log/squid/access.log squid
+coredump_dir /var/spool/squid
+refresh_pattern ^ftp:           1440    20%     10080
+refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
+refresh_pattern \/(Packages|Sources)(|\.bz2|\.gz|\.xz)$ 0 0% 0 refresh-ims
+refresh_pattern \/Release(|\.gpg)$ 0 0% 0 refresh-ims
+refresh_pattern \/InRelease$ 0 0% 0 refresh-ims
+refresh_pattern \/(Translation-.*)(|\.bz2|\.gz|\.xz)$ 0 0% 0 refresh-ims
+refresh_pattern .               0       20%     4320
 http_port 8080 accel vhost
 cache_peer 10.200.123.141 parent 80 0 no-query originserver name=iis-server
 acl site dstdomain proxy-demo
@@ -37,6 +43,5 @@ cache_peer_access iis-server allow site
 Restart the squid service to apply the changes:
 
 ```sh
-sudo systemctl stop squid
-sudo systemctl start squid
+sudo systemctl reload squid
 ```
