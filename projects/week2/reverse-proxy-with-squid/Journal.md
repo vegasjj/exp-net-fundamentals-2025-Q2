@@ -43,7 +43,7 @@ Below, you can see the configuration of the hosts file on my personal PC. This s
 
 ![hosts file configuration for  proxy-demo domain](./assets/reverse-proxy-with-squid-d.png)
 
-Also, a rule must be added in the AWS security group associated with the reverse proxy server to allow incoming traffic to **port 8080**:
+Also, a rule was added in the AWS security group associated with the reverse proxy server to allow incoming traffic to **port 8080**:
 
 ![security group showing rule to allow incoming traffic to port 8080](./assets/reverse-proxy-with-squid-g.png)
 
