@@ -1,10 +1,10 @@
 # Deploying Reverse Proxy with Squid on Ubuntu
 
-The steps detailed here assume **squid** is already installed with a basic configuration. If you need to set it up go to [this README](../forward-proxy-with-squid/README.md).
+The steps detailed here assume **squid** is already installed with a basic configuration. If you need to set it up [follow these instructions](../forward-proxy-with-squid/README.md).
 
 ## Reverse Proxy Setup
 
-To show the current Squid configuration (filtering commented and blank lines), run:
+To show the current squid configuration (filtering commented and blank lines), run:
 
 ```sh
 cat /etc/squid/squid.conf | grep -v '^#' | grep -v '^$'
@@ -17,12 +17,13 @@ acl localnet src 10.200.123.128/28
 acl SSL_ports port 443
 acl Safe_ports port 80          # http
 acl Safe_ports port 443         # https
-acl Safe_ports port 8080        # reverse proxy
+acl Safe_ports port 8080        # ← Add this line
 http_access deny !Safe_ports
 http_access deny CONNECT !SSL_ports
 http_access allow localhost
 include /etc/squid/conf.d/*.conf
 http_access allow localnet
+# http_access deny all          # ← Remove or comment this line
 http_port 3128
 access_log daemon:/var/log/squid/access.log squid
 coredump_dir /var/spool/squid
@@ -33,12 +34,22 @@ refresh_pattern \/Release(|\.gpg)$ 0 0% 0 refresh-ims
 refresh_pattern \/InRelease$ 0 0% 0 refresh-ims
 refresh_pattern \/(Translation-.*)(|\.bz2|\.gz|\.xz)$ 0 0% 0 refresh-ims
 refresh_pattern .               0       20%     4320
+# Add all lines from here
+# Listening port for reverse proxy
 http_port 8080 accel vhost
+# Origin server to which the reverse proxy redirect clients. Replace the IP with your own origin server
 cache_peer 10.200.123.141 parent 80 0 no-query originserver name=iis-server
+# Client requests to the proxy-demo domain will be allowed
 acl site dstdomain proxy-demo
+# All http request will be allowed regardless of source or destination
 http_access allow all
+# Requests made to proxy-demo will be allowed to be served to the origin server: iis-server 
 cache_peer_access iis-server allow site
 ```
+
+If you installed and configured squid with the instructions provided in this repo, you only need to add or remove the lines specified in the above code snippet as these are the ones relevant to the reverse proxy setup.
+
+**Important**: this configuration is overly permissive and should only be used for demonstration purposes. Further restrictions must be added in a production environment.
 
 Restart the squid service to apply the changes:
 
