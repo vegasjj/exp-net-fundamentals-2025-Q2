@@ -7,7 +7,7 @@ An AWS EC2 instance running Ubuntu with the **squid** package installed was used
 Two more EC2 instances running Windows Server 2025 were deployed:
 
 - Client proxy – no public IP; all Internet requests are sent through the web proxy server.  
-- Jump box – RDP bastion host used to reach the proxy client as it lacks a public IP.
+- Jump box – RDP bastion host used to manage the proxy client as it lacks a public IP.
 
 ## Deployment
 
@@ -29,9 +29,8 @@ On the web proxy server, the squid traffic was monitored to capture the client p
 
 ![Proxy server capturing squid logs](./assets/forward-proxy-1.png)
 
-Also, on the networking configuration for the web proxy server (on the AWS console), it was necessary to **disable the source/destination check** so that the proxy could forward traffic coming from the client proxy without being drop (remember: the web proxy server only forwards packets; it is not the final destination.)
-
+Also, on the networking configuration for the web proxy server (on the AWS console), it was necessary to **disable the source/destination check** so that the proxy could forward traffic coming from the client proxy without being dropped (remember: the web proxy server only forwards packets; it is not the final destination.)
 
 ![AWS console showing networking configuration](./assets/forward-proxy-4.png)
 
-Let me know when you have completed these steps to continue with more complex features.
+Please let me know when you have completed these steps to continue with more complex features.
