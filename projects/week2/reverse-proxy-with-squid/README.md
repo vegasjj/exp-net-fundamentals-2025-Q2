@@ -41,15 +41,16 @@ http_port 8080 accel vhost
 cache_peer 10.200.123.141 parent 80 0 no-query originserver name=iis-server
 # Client requests to the proxy-demo domain will be allowed
 acl site dstdomain proxy-demo
-# All http request will be allowed regardless of source or destination
-http_access allow all
 # Requests made to proxy-demo will be allowed to be served to the origin server: iis-server 
+http_access allow site
 cache_peer_access iis-server allow site
+# Deny everything else
+http_access deny all
 ```
 
 If you installed and configured squid with the instructions provided in this repo, you only need to add or remove the lines specified in the above code snippet as these are the ones relevant to the reverse proxy setup.
 
-**Important**: this configuration is overly permissive and should only be used for demonstration purposes. Further restrictions must be added in a production environment.
+**Important**: make sure you move the line ```http_access deny all``` to the bottom of the file; otherwise you would not be able to connect to the origin server.
 
 Restart the squid service to apply the changes:
 

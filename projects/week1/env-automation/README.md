@@ -2,7 +2,7 @@
 
 ## Check Your AWS Account
 
-We need to check that we are signed in to the ritght AWS account
+We need to check that we are signed in to the right AWS account
 
 ```sh
 aws sts get-caller-identity
