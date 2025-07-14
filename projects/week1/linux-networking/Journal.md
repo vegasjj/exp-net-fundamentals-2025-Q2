@@ -44,7 +44,7 @@ index.html                    100%[=============================================
 
 The above output shows the `wget` command downloading the `index.html` file from `exampro.co`
 
-`curl` is most used to transffers data from or to a server using URLs in a variety of protocolos, that's why is very popular to target APIs.
+`curl` is most used to transfers data from or to a server using URLs in a variety of protocols, that's why is very popular to target APIs.
 
 ```sh
 curl google.com
@@ -56,4 +56,4 @@ The document has moved
 </BODY></HTML>
 ```
 
-The ouput shows a request made to `google.com` and the default response. In the real world the request would have been made to a service to either get, write or modify data.
+The output shows a request made to `google.com` and the default response. In the real world the request would have been made to a service to either get, write or modify data.

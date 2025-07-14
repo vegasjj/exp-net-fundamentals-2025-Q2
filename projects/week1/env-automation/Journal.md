@@ -1,7 +1,7 @@
 
 # VPC Settings
 
-These are the VPC Settings Andrew listed based in Tim's video for the cloud enviroment in AWS. I need to change the original CIDR block as I already have a VPC with that range:
+These are the VPC Settings Andrew listed based in Tim's video for the cloud environment in AWS. I need to change the original CIDR block as I already have a VPC with that range:
 
 - VPC IPv4 CIDR Block: 10.200.124.0/24
 - Ipv6 CIDR Block: No

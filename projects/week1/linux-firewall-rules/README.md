@@ -17,7 +17,7 @@ Use `curl` to get the test webpage and confirm it loads correctly.
 curl http://127.0.0.1:8080
 ```
 
-Test the `curl` command from outside AWS to confirm the server is reacheable from the internet (replace the IP with the Elatic IP address)
+Test the `curl` command from outside AWS to confirm the server is reachable from the internet (replace the IP with the Elastic IP address)
 
 ## Proceed with deployment
 

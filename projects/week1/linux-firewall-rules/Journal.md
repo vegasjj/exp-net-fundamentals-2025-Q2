@@ -36,7 +36,7 @@ So as long as port 8080 is open in the AWS security group, `curl` requests load 
 
 Modern firewalls must be configured to block all incoming traffic which hasn't been explicitly allowed.
 
-I proceed to lock down the server by adding a rule to accept incomming ssh traffic (to prevent being  locked out of the server when setting the drop policy):
+I proceed to lock down the server by adding a rule to accept incoming ssh traffic (to prevent being  locked out of the server when setting the drop policy):
 
 ```sh
 sudo iptables -A INPUT -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT

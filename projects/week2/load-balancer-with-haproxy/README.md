@@ -56,5 +56,4 @@ You should see a similar output to:
 │ clab-basic-haproxylab1-web2    │ linux                             │ running │ 172.20.20.4       │
 │                                │ ubuntu/apache2:latest             │         │ 3fff:172:20:20::4 │
 ╰────────────────────────────────┴───────────────────────────────────┴─────────┴───────────────────╯
-
 ```
